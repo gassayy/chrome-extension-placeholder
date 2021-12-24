@@ -90,6 +90,3 @@ ApiCall({ key: secrets.key });
 
 Gassa Yan
 
-
-
-asasd
