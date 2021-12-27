@@ -17,5 +17,8 @@
 .env.production.local
 .history
 
+# Compiler generated files
+*.d.*
+
 # secrets
 secrets.*.js

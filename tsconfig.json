@@ -1,20 +1,60 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": false,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
+    "compilerOptions": {
+    // Classification follows https://www.typescriptlang.org/tsconfig
+
+    // Type Checking
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
+    // exactOptionalPropertyTypes: false,
+    "noImplicitOverride": true,
     "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    // noPropertyAccessFromIndexSignature: false,
+    // noUncheckedIndexedAccess: false,
+    // noUnusedLocals: false,
+    // noUnusedParameters: false,
+
+    // Modules
+    "module": "ESNext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "noEmit": false,
-    "jsx": "react"
-  },
-  "include": ["src"],
-  "exclude": ["build", "node_modules"]
+    // Exclude everything by default. Include them in each project on-demand
+    "types": ["web"],
+
+    // Emit
+    "declaration": true,
+    "declarationMap": true,
+    "importsNotUsedAsValues": "error",
+    "sourceMap": true,
+    "stripInternal": true, // skip type emit for @internal types
+
+    // JavaScript Support
+    "allowJs": true,
+    "checkJs": false,
+
+    // Interop Constraints
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+
+    // Language and Environment
+    "jsx": "react-jsx",
+    "lib": ["es2020"], // don't add "DOM", we use @types/web
+    "target": "ES2019",
+    "useDefineForClassFields": true,
+
+    // Projects
+    "composite": true,
+    "incremental": true,
+
+    // Completeness
+    "skipLibCheck": true // skip all type checks for .d.ts files
+    },
+    "ts-node": {
+    "compilerOptions": {
+        "module": "CommonJS"
+    },
+    "transpileOnly": true
+    }
 }
