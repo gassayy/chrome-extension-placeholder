@@ -1,7 +1,9 @@
 {
-    "compilerOptions": {
+  "compileOnSave": true,
+  "compilerOptions": {
     // Classification follows https://www.typescriptlang.org/tsconfig
-
+    //"outDir": "./ts_output",
+    "typeRoots": ["./typyings"],
     // Type Checking
     "strict": true,
     // exactOptionalPropertyTypes: false,
@@ -24,9 +26,9 @@
 
     // Emit
     "declaration": true,
-    "declarationMap": true,
+    "declarationMap": false,
     "importsNotUsedAsValues": "error",
-    "sourceMap": true,
+    "sourceMap": false,
     "stripInternal": true, // skip type emit for @internal types
 
     // JavaScript Support
@@ -50,11 +52,12 @@
 
     // Completeness
     "skipLibCheck": true // skip all type checks for .d.ts files
-    },
-    "ts-node": {
+  },
+  "exclude": ["./build/**/*", "./utils/build.js"],
+  "ts-node": {
     "compilerOptions": {
-        "module": "CommonJS"
+      "module": "CommonJS"
     },
     "transpileOnly": true
-    }
+  }
 }
