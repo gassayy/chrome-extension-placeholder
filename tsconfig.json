@@ -53,7 +53,7 @@
     // Completeness
     "skipLibCheck": true // skip all type checks for .d.ts files
   },
-  "exclude": ["./build/**/*", "./utils/build.js"],
+  "exclude": ["./build/**/*"],
   "ts-node": {
     "compilerOptions": {
       "module": "CommonJS"
