@@ -190,6 +190,19 @@ var options = {
       chunks: ['popup'],
       cache: false,
     }),
+    new HtmlWebpackPlugin({
+      template: path.join(
+        __dirname,
+        'src',
+        'extension',
+        'Pages',
+        'Welcome',
+        'policy.html'
+      ),
+      chunks: ['policy'],
+      filename: 'policy.html',
+      cache: false,
+    }),
   ],
   infrastructureLogging: {
     level: 'info',

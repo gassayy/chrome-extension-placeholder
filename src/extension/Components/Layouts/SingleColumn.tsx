@@ -1,4 +1,4 @@
-import { styled, Paper, Typography } from '@mui/material';
+import { styled, Paper } from '@mui/material';
 
 const Container = styled('div')(
   ({ theme }) => `
@@ -28,10 +28,7 @@ export function SingleColumn({
   return (
     <Container>
       <Content>
-        <Paper variant="outlined">
-          <Typography> Single Column Layout </Typography>
-          {children}
-        </Paper>
+        <Paper variant="outlined">{children}</Paper>
       </Content>
     </Container>
   );
