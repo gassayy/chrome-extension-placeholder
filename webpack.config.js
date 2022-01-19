@@ -4,32 +4,22 @@ var webpack = require('webpack'),
   env = require('./utils/env'),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  TerserPlugin = require('terser-webpack-plugin');
+  TerserPlugin = require('terser-webpack-plugin'),
+  NodePolyfillPlugin = require('node-polyfill-webpack-plugin')
 
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+const ASSET_PATH = process.env.ASSET_PATH || '/'
 
 var alias = {
   'react-dom': '@hot-loader/react-dom',
-};
+}
 
 // load the secrets
-var secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js');
+var secretsPath = path.join(__dirname, 'secrets.' + env.NODE_ENV + '.js')
 
-var fileExtensions = [
-  'jpg',
-  'jpeg',
-  'png',
-  'gif',
-  'eot',
-  'otf',
-  'svg',
-  'ttf',
-  'woff',
-  'woff2',
-];
+var fileExtensions = ['jpg', 'jpeg', 'png', 'gif', 'eot', 'otf', 'svg', 'ttf', 'woff', 'woff2']
 
 if (fileSystem.existsSync(secretsPath)) {
-  alias['secrets'] = secretsPath;
+  alias['secrets'] = secretsPath
 }
 
 var options = {
@@ -37,20 +27,8 @@ var options = {
   entry: {
     options: path.join(__dirname, 'src', 'extension', 'Options', 'index.tsx'),
     popup: path.join(__dirname, 'src', 'extension', 'Popup', 'index.jsx'),
-    background: path.join(
-      __dirname,
-      'src',
-      'extension',
-      'Background',
-      'index.ts'
-    ),
-    contentScript: path.join(
-      __dirname,
-      'src',
-      'extension',
-      'Content',
-      'index.ts'
-    ),
+    background: path.join(__dirname, 'src', 'extension', 'Background', 'index.ts'),
+    contentScript: path.join(__dirname, 'src', 'extension', 'Content', 'index.ts'),
   },
   chromeExtensionBoilerplate: {
     notHotReload: ['contentScript'],
@@ -118,9 +96,7 @@ var options = {
   },
   resolve: {
     alias: alias,
-    extensions: fileExtensions
-      .map((extension) => '.' + extension)
-      .concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
+    extensions: fileExtensions.map((extension) => '.' + extension).concat(['.js', '.jsx', '.ts', '.tsx', '.css']),
   },
   plugins: [
     new webpack.ProgressPlugin(),
@@ -139,8 +115,8 @@ var options = {
                 description: process.env.npm_package_description,
                 version: process.env.npm_package_version,
                 ...JSON.parse(content.toString()),
-              })
-            );
+              }),
+            )
           },
         },
       ],
@@ -173,13 +149,7 @@ var options = {
       ],
     }),
     new HtmlWebpackPlugin({
-      template: path.join(
-        __dirname,
-        'src',
-        'extension',
-        'Options',
-        'index.html'
-      ),
+      template: path.join(__dirname, 'src', 'extension', 'Options', 'index.html'),
       filename: 'options.html',
       chunks: ['options'],
       cache: false,
@@ -191,26 +161,20 @@ var options = {
       cache: false,
     }),
     new HtmlWebpackPlugin({
-      template: path.join(
-        __dirname,
-        'src',
-        'extension',
-        'Pages',
-        'Welcome',
-        'policy.html'
-      ),
+      template: path.join(__dirname, 'src', 'extension', 'Pages', 'Welcome', 'policy.html'),
       chunks: ['policy'],
       filename: 'policy.html',
       cache: false,
     }),
+    new NodePolyfillPlugin(),
   ],
   infrastructureLogging: {
     level: 'info',
   },
-};
+}
 
 if (env.NODE_ENV === 'development') {
-  options.devtool = 'cheap-module-source-map';
+  options.devtool = 'cheap-module-source-map'
 } else {
   options.optimization = {
     minimize: true,
@@ -219,7 +183,7 @@ if (env.NODE_ENV === 'development') {
         extractComments: false,
       }),
     ],
-  };
+  }
 }
 
-module.exports = options;
+module.exports = options

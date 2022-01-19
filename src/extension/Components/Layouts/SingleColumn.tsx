@@ -1,35 +1,12 @@
-import { styled, Paper } from '@mui/material';
-
-const Container = styled('div')(
-  ({ theme }) => `
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: ${theme.spacing(4)};
-    height: 100%;
-    width: 100%;
-`
-);
-
-const Content = styled('div')(`
-    width: 900px;
-    max-height: 90%;
-    `);
-
+import { styled, Paper, Grid } from '@mui/material'
 interface SingleColumnProps extends React.PropsWithChildren<{}> {
-  haveFooter?: boolean;
+  haveFooter?: boolean
 }
 
-export function SingleColumn({
-  haveFooter = true,
-  children,
-}: SingleColumnProps) {
+export function SingleColumn({ haveFooter = true, children }: SingleColumnProps) {
   return (
-    <Container>
-      <Content>
-        <Paper variant="outlined">{children}</Paper>
-      </Content>
-    </Container>
-  );
+    <Grid container direction="column">
+      <Paper variant="outlined">{children}</Paper>
+    </Grid>
+  )
 }

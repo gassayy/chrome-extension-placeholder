@@ -73,6 +73,7 @@
     "html-loader": "^3.0.0",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^27.4.5",
+    "node-polyfill-webpack-plugin": "^1.1.4",
     "node-sass": "^7.0.0",
     "prettier": "^2.4.1",
     "sass-loader": "^12.2.0",

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Box, Stepper, Typography, Step, StepButton, Button, Paper } from '@mui/material'
+import { Box, Stepper, Typography, Step, StepButton, Button } from '@mui/material'
 
 export interface StepItemProps {
   label: string
@@ -45,11 +45,11 @@ function ContentBox({ steps, active, completed, done, back, next, completedSteps
       <Typography>Place Holder</Typography>
       <Box>{steps[active].item}</Box>
       <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-        <Button color="inherit" disabled={active === 0} onClick={back} sx={{ mr: 1 }}>
+        <Button variant="outlined" color="inherit" disabled={active === 0} onClick={back} sx={{ mr: 1 }}>
           Back
         </Button>
         <Box sx={{ flex: '1 1 auto' }} />
-        <Button onClick={next} sx={{ mr: 1 }}>
+        <Button variant="outlined" onClick={next} sx={{ mr: 1 }}>
           Next
         </Button>
         {active !== total() &&
@@ -58,7 +58,9 @@ function ContentBox({ steps, active, completed, done, back, next, completedSteps
               Step {active + 1} already completed
             </Typography>
           ) : (
-            <Button onClick={done}>{completedSteps() === total() - 1 ? 'Finish' : 'Complete Step'}</Button>
+            <Button variant="outlined" onClick={done}>
+              {completedSteps() === total() - 1 ? 'Finish' : 'Complete Step'}
+            </Button>
           ))}
       </Box>
     </React.Fragment>
