@@ -167,6 +167,8 @@ var options = {
       cache: false,
     }),
     new NodePolyfillPlugin(),
+    // for extension-polyfill
+    new CopyWebpackPlugin({ patterns: [{ from: 'node_modules/webextension-polyfill/dist/browser-polyfill.js' }] }),
   ],
   infrastructureLogging: {
     level: 'info',

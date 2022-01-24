@@ -3,7 +3,7 @@
   "compilerOptions": {
     // Classification follows https://www.typescriptlang.org/tsconfig
     //"outDir": "./ts_output",
-    "typeRoots": ["./typyings"],
+    "typeRoots": ["node_modules/@types", "node_modules/web-ext-types"],
     // Type Checking
     "strict": true,
     // exactOptionalPropertyTypes: false,
