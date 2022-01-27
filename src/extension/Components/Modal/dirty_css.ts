@@ -20,8 +20,8 @@ export const ModalCss = `
 }
 
 .MyModal {
-  width: 250px;
-  height: 170px;
+  width: 100%;
+  height: 100%;
   background: white;
   color: white;
   z-index: 10;
@@ -41,16 +41,11 @@ export const ModalCss = `
   margin: 0;
   padding: 10px;
   color: #2c3e50;
-  font-weight: 500;
-  font-size: 18px;
-  text-align: center;
 }
 
 .modalContent {
   padding: 10px;
-  font-size: 14px;
   color: #2c3e50;
-  text-align: center;
 }
 
 .modalActions {
@@ -72,7 +67,7 @@ export const ModalCss = `
   padding: 4px 8px;
   border-radius: 8px;
   border: none;
-  font-size: 18px;
+  font-size: 12px;
   color: #2c3e50;
   background: white;
   transition: all 0.25s ease;
@@ -81,8 +76,6 @@ export const ModalCss = `
   right: 0;
   top: 0;
   align-self: flex-end;
-  margin-top: -7px;
-  margin-right: -7px;
 }
 
 .closeBtn:hover {

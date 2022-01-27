@@ -13,7 +13,6 @@ import {
   Dropdown,
 } from 'react-bootstrap'
 import { useEffect, useState } from 'react'
-import type { display } from '@mui/system'
 
 function AlertDismissibleExample() {
   const [show, setShow] = useState(true)
