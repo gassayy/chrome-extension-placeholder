@@ -1,4 +1,4 @@
-import { styled, Paper, Grid } from '@mui/material'
+import { Paper, Grid } from '@mui/material'
 interface SingleColumnProps extends React.PropsWithChildren<{}> {
   haveFooter?: boolean
 }
