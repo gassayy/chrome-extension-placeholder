@@ -5,9 +5,8 @@ import Box from '@mui/material/Box';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-
-const theme = createTheme();
+import { ThemeProvider } from '@mui/material/styles';
+import theme from '../../../../theme'
 
 export default function UserInfoForm() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -63,7 +62,7 @@ export default function UserInfoForm() {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, bgcolor: 'primary.main' }}
             >
               Sign Up
             </Button>
