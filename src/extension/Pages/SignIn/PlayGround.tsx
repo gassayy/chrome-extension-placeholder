@@ -57,11 +57,11 @@ function ContextualVariationBadges() {
       <Badge bg="danger">Danger</Badge>{' '}
       <Badge bg="warning" text="dark">
         Warning
-      </Badge>{' '}
+      </Badge>
       <Badge bg="info">Info</Badge>{' '}
       <Badge bg="light" text="dark">
         Light
-      </Badge>{' '}
+      </Badge>
       <Badge bg="dark">Dark</Badge>
     </div>
   )

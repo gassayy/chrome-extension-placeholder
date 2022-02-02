@@ -1,7 +1,7 @@
 {
   "name": "chrome-extension-placeholder",
   "version": "4.2.0",
-  "description": "A chrome extension for <place_holder>",
+  "description": "A chrome extension for cypher matrix",
   "license": "MIT",
   "repository": {
     "type": "git",
