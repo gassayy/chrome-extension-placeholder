@@ -10,16 +10,30 @@ import theme from '../../../../theme'
 import { useState } from 'react';
 
 export default function UserInfoForm() {
-  const [isEmailValid, setEmailValid] = useState(true)
 
-  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const isEmailValid = String(event.target.value)
+  const [email, setEmail] = useState('');
+  const [isEmailValid, setEmailValid] = useState(true)
+  const [username, setUsername] = useState('');
+  const [isUsernameValid, setUsernameValid] = useState(true)
+
+  // TODO: disable submit button if input values are not valid
+
+  const validateEmail = (email: String) => {
+    return !!String(email)
       .toLowerCase()
       .match(
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
-    // console.log('isEmailValid: ', !!isEmailValid);
-    setEmailValid(!!isEmailValid);
+  }
+
+  const handleUsernameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+    setUsernameValid(!!event.target.value && event.target.value.length >= 3);
+  }
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value);
+    setEmailValid(validateEmail(event.target.value));
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -62,6 +76,9 @@ export default function UserInfoForm() {
               id="username"
               autoComplete="username"
               autoFocus
+              error={!!username && !isUsernameValid}
+              helperText={!!username && !isUsernameValid ? "Invalid Username" : ""}
+              onChange={handleUsernameChange}
             />
             <TextField
               margin="normal"
@@ -71,8 +88,8 @@ export default function UserInfoForm() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              error={!isEmailValid}
-              helperText={isEmailValid ? "" : "Invalid Email"}
+              error={!!email && !isEmailValid}
+              helperText={!!email && !isEmailValid ? "Invalid Email" : ""}
               onChange={handleEmailChange}
             />
             <Button
