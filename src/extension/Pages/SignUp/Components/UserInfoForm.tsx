@@ -7,8 +7,21 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../../../../theme'
+import { useState } from 'react';
 
 export default function UserInfoForm() {
+  const [isEmailValid, setEmailValid] = useState(true)
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const isEmailValid = String(event.target.value)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+    // console.log('isEmailValid: ', !!isEmailValid);
+    setEmailValid(!!isEmailValid);
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -17,6 +30,7 @@ export default function UserInfoForm() {
       email: data.get('email'),
       password: data.get('password'),
     });
+    // TODO: call rpc to store user info into local storage
   };
 
   return (
@@ -47,6 +61,7 @@ export default function UserInfoForm() {
               type="username"
               id="username"
               autoComplete="username"
+              autoFocus
             />
             <TextField
               margin="normal"
@@ -56,7 +71,9 @@ export default function UserInfoForm() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
+              error={!isEmailValid}
+              helperText={isEmailValid ? "" : "Invalid Email"}
+              onChange={handleEmailChange}
             />
             <Button
               type="submit"
