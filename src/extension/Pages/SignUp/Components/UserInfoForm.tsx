@@ -13,6 +13,7 @@ export default function UserInfoForm() {
   } = useForm<UserInfo>()
 
   const onSubmit = handleSubmit((data) => {
+    window.localStorage.setItem('xyz', data.username)
     console.log(data)
   })
 
