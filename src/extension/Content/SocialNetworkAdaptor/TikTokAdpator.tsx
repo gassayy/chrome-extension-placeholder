@@ -1,10 +1,15 @@
 import { Link, Tooltip, IconButton, Button, TooltipProps, SvgIconProps } from '@mui/material'
+import { useState } from 'react'
 import TokenOutlinedIcon from '@mui/icons-material/TokenOutlined'
 import MonetizationOnRoundedIcon from '@mui/icons-material/MonetizationOnRounded'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from '../../../theme'
 import { LiveSelector } from '@dimensiondev/holoflows-kit'
+import { ShadowApp } from '../../Components/ShadowRoot'
+import Popperover from '../../Components/Popperover/Popperover'
+import { Modal } from '../../Components/Modal/Modal'
+import { TikTokConnectionDialog } from './TikTokConnectionDialog'
 
 const TopNavMenu = '[data-e2e="inbox-icon"]'
 const VideoFeed = '[data-e2e="feed-video"]'
@@ -47,6 +52,23 @@ const MintNFTButton = () => {
         </IconButton>
       </Tooltip>
     </ThemeProvider>
+  )
+}
+
+function TiktokUserConnectionBox() {
+  const [isOpen, setIsOpen] = useState(true)
+
+  const handleClose = () => {
+    setIsOpen(false)
+  }
+
+  return (
+    <ShadowApp delegatesFocus={false} mode="open">
+      <Popperover />
+      <Modal handleClose={handleClose} isOpen={isOpen}>
+        <TikTokConnectionDialog handleClose={handleClose} />
+      </Modal>
+    </ShadowApp>
   )
 }
 
@@ -94,3 +116,10 @@ export const injections = [
     },
   },
 ]
+
+export function openConnectionBox() {
+  let appDiv = document.querySelector('#app')
+  let shadowRoot = document.createElement('div')
+  appDiv?.appendChild(shadowRoot)
+  appDiv && ReactDOM.render(<TiktokUserConnectionBox />, shadowRoot)
+}
