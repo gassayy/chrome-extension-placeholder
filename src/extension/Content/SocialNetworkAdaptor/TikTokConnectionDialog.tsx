@@ -1,6 +1,6 @@
 import React, { PropsWithChildren, useState, MouseEvent, ChangeEvent } from 'react'
 import { CloseButton, Form, Button, Modal, InputGroup, FormControl } from 'react-bootstrap'
-
+import browser from 'webextension-polyfill'
 interface TikTokConnectionDialogProps {
   handleClose: () => void
 }
@@ -9,6 +9,12 @@ export function TikTokConnectionDialog({ handleClose }: TikTokConnectionDialogPr
   const [userId, setUserId] = useState('')
   const handleSubmit = (event: MouseEvent) => {
     console.log('userId: ', userId)
+    browser.runtime.sendMessage(browser.runtime.id, {
+      service: 'storage',
+      action: 'set',
+      key: 'user-id',
+      value: userId,
+    })
     handleClose()
   }
 
