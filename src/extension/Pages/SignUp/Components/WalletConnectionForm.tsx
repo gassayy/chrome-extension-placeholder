@@ -13,6 +13,7 @@ export default function WalletConnectionForm() {
   async function connect() {
     try {
       await activate(injected)
+      console.log(account)
     } catch (ex) {
       console.log(ex)
     }

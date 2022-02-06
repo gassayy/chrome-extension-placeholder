@@ -173,6 +173,9 @@ var options = {
   infrastructureLogging: {
     level: 'info',
   },
+  experiments: {
+    topLevelAwait: true,
+  },
 }
 
 if (env.NODE_ENV === 'development') {

@@ -6,6 +6,7 @@ import { Pages } from '../Pages/routes'
 import { HashRouter, Link } from 'react-router-dom'
 import { Web3ReactProvider } from '@web3-react/core'
 import Web3 from 'web3'
+import TokenIcon from '@mui/icons-material/Token'
 
 function getLibrary(provider: any) {
   return new Web3(provider)
